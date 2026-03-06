@@ -14,7 +14,7 @@ app.use(cors());
 
 
 app.get("/", (req, res) => {
-    res.json({message: "This is the server error message best second time"})
+    res.json({message: "Congrats This is the Home Page"})
 })
 app.use("/api/auth", require("./routes/authRoutes.js"));
 app.use("/api/users", require("./routes/userRoutes.js"));
