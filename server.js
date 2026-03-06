@@ -10,7 +10,10 @@ const app = express();
 dotenv.config();
 connectDB();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: ["https://lmsProject_1.vercel.app", "http://localhost:3000"], // 👈 Yahan apne frontend ka naya URL add karna hoga
+    credentials: true
+}));
 
 
 app.get("/", (req, res) => {
