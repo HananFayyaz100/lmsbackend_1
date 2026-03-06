@@ -1,0 +1,27 @@
+// server.js mein routes se pehle:
+require('./models/course');
+require('./models/User');
+require('./models/Enrollment'); 
+const express = require("express")
+const connectDB = require("./config/db.js")
+const dotenv = require("dotenv")
+const cors = require("cors")
+const app = express();
+dotenv.config();
+connectDB();
+app.use(express.json());
+app.use(cors());
+
+
+app.get("/", (req, res) => {
+    res.json({message: "This is the server error message best second time"})
+})
+app.use("/api/auth", require("./routes/authRoutes.js"));
+app.use("/api/users", require("./routes/userRoutes.js"));
+app.use("/api/courses", require("./routes/courseRoutes.js"));
+app.use("/api/enroll", require("./routes/enrollmentRoutes.js"));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log("Server is running on port 5000"));
+
+module.exports = app;
