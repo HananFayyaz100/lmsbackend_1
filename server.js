@@ -11,13 +11,14 @@ dotenv.config();
 connectDB();
 app.use(express.json());
 app.use(cors({
-    origin: ["https://lmsProject_1.vercel.app", "http://localhost:3000"], // 👈 Yahan apne frontend ka naya URL add karna hoga
+    origin: "*", // Yeh har request ko allow kar dega
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 
 
 app.get("/", (req, res) => {
-    res.json({message: "Congrats This is the Home Page"})
+    res.json({message: "Congrats This is the Home Page after second change"})
 })
 app.use("/api/auth", require("./routes/authRoutes.js"));
 app.use("/api/users", require("./routes/userRoutes.js"));
